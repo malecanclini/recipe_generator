@@ -4,27 +4,29 @@ const resultDiv = document.getElementById("result");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const prompt = `Generate a simple recipe using these ingredients: ${userInput.value}.`;
-    const apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; // Asegúrate de que la API key esté entre comillas
-    
-    const context = "You are a cooking expert. Could you generate a simple recipe for the user who indicates the ingredients available in their fridge?";
+    const ingredients = userInput.value;
 
-    resultDiv.textContent = "Generating...";
+    resultDiv.textContent = "Searching for recipes...";
 
     try {
-        const response = await fetch(`https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`, {
-            method: "GET",
-        });
-
-        if (!response.ok) {
-            throw new Error('Network error');
+        // Buscar recetas en TheMealDB
+        const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${encodeURIComponent(ingredients)}`);
+        
+        if (!mealResponse.ok) {
+            throw new Error('Network error for meal search');
         }
 
-        const data = await response.json();
-        console.log(data); // Verifica la respuesta
-
-        const recipe = data.result || data.recipe || "No recipe generated. Please check the ingredients or try again.";
-        resultDiv.innerHTML = `<h2>Generated Recipe</h2><p>${recipe}</p>`;
+        const mealData = await mealResponse.json();
+        if (mealData.meals) {
+            resultDiv.innerHTML = `<h2>Possible Meals</h2><ul>`;
+            mealData.meals.forEach(meal => {
+                resultDiv.innerHTML += `<li>${meal.strMeal}</li>`;
+            });
+            resultDiv.innerHTML += `</ul>`;
+        } else {
+            resultDiv.innerHTML = `<p>No meals found for the given ingredients.</p>`;
+        }
+        
     } catch (error) {
         resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
     }
