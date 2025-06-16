@@ -1,89 +1,82 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f3e5; /* Color claro similar a la masa de pizza */
-    color: #5c3a21; /* Color marrón que recuerda a la corteza */
+/* styles.css */
+
+/* Reset básico */
+* {
     margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('ruta/a/tu/imagen-de-fondo.jpg'); /* Agrega una imagen de fondo */
-    background-size: cover;
-    background-position: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 h1 {
-    color: #d35400; /* Color naranja como el tomate */
-    margin-bottom: 20px;
+    text-align: center;
+    margin: 20px 0;
+    color: #4CAF50; /* Color verde */
 }
 
 form {
-    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
 }
 
 label {
     margin-bottom: 10px;
-    display: block;
     font-weight: bold;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    transition: border-color 0.3s;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 input[type="text"]:focus {
-    border-color: #e67e22; /* Color naranja más intenso al enfocar */
-    outline: none;
+    border-color: #333; /* Cambia el borde al enfocar */
 }
 
 button {
-    background-color: #e74c3c; /* Rojo intenso como el tomate */
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
     font-size: 16px;
-    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #c0392b; /* Rojo más oscuro al pasar el cursor */
+    background-color: #45a049; /* Color del botón al pasar el mouse */
 }
 
 #result {
-    margin-top: 20px;
+    margin: 20px;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
 }
 
 footer {
-    margin-top: 30px;
-    font-size: 0.9em;
     text-align: center;
+    margin-top: 20px;
 }
 
 footer a {
-    color: #e67e22; /* Color naranja para enlaces */
+    color: #4CAF50; /* Color del enlace */
     text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayar al pasar el mouse */
 }
