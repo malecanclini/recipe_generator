@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Generator AI</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>AI Recipe Generator</h1>
-  <form id="form">
-    <label for="userInput">What ingredients do you have in your refrigerator?</label>
-    <input type="text" id="userInput" placeholder="e.g., milk, eggs, tomatoes" required>
-    <button type="submit">Generate Recipe</button>
-  </form>
-  <div id="result"></div>
-  <footer>
-    Coded by <a href="https://www.linkedin.com/in/alecanclini/" target="_blank">Alejandra Canclini</a> | 
-    <a href="https://github.com/malecanclini" target="_blank">View on GitHub</a>
-  </footer>
-  <script src="script.js"></script>
-</body>
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Generador de Recetas con IA</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Generador de Recetas con IA</h1>
+      </header>
+
+      <main>
+        <div class="form-container">
+          <form id="recipe-generator-form">
+            <input
+              type="text"
+              placeholder="Ingresa ingredientes o tipo de cocina..."
+              autofocus
+              required
+              autocomplete="off"
+              class="instructions"
+            />
+            <input type="submit" class="submit-button" id="user-instructions" />
+          </form>
+          <div class="hint">Ej: Tomate, Queso, Pollo, Italiana, Vegana</div>
+        </div>
+        <div class="recipe hidden" id="recipe"></div>
+      </main>
+
+      <footer>
+        Este proyecto de IA fue codificado por
+        <a href="https://www.linkedin.com/in/alecanclini/" target="_blank"
+          >Alejandra Canclini</a
+        >
+        y es
+        <a href="https://github.com/malecanclini" target="_blank"
+          >de código abierto en Github</a
+        >
+        y está
+        <a
+          href="https://app.netlify.com/teams/malecanclini/sites"
+          target="_blank"
+          >alojado en Netlify</a
+        >
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
 </html>
