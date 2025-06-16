@@ -4,17 +4,13 @@ const resultDiv = document.getElementById("result");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const prompt = userInput.value;
-
+    const prompt = `Create a recipe using the following ingredients: ${userInput.value}.`;
+    const apiKey = "YOUR_API_KEY";
     resultDiv.textContent = "Generating...";
 
     try {
-        const response = await fetch("/.netlify/functions/generate", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ prompt })
+        const response = await fetch(`https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&key=${apiKey}`, {
+            method: "GET",
         });
 
         if (!response.ok) {
