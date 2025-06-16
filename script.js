@@ -9,8 +9,10 @@ form.addEventListener("submit", async (e) => {
     resultDiv.textContent = "Searching for recipes...";
 
     try {
-        // Buscar recetas en TheMealDB
-        const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${encodeURIComponent(ingredients)}`);
+        const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${encodeURIComponent(ingredients)}`;
+        console.log(`Fetching meals with URL: ${apiUrl}`);
+
+        const mealResponse = await fetch(apiUrl);
         
         if (!mealResponse.ok) {
             throw new Error('Network error for meal search');
