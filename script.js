@@ -7,7 +7,7 @@ form.addEventListener("submit", async (e) => {
     const prompt = `Create a recipe using the following ingredients: ${userInput.value}.`;
     const apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; 
     
-    // Updated context
+    // Context for the AI
     const context = "You are a cooking expert. Could you generate a simple recipe for the user who indicates the ingredients available in their fridge?";
 
     resultDiv.textContent = "Generating...";
@@ -22,7 +22,7 @@ form.addEventListener("submit", async (e) => {
         }
 
         const data = await response.json();
-        resultDiv.textContent = data.result; // Adjust according to the response structure
+        resultDiv.innerHTML = `<h2>Generated Recipe</h2><p>${data.result}</p>`; // Adjust according to the response structure
     } catch (error) {
         resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
     }
