@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador de Recetas con IA</title>
-    <!-- Incluye Typewriter.js y Axios directamente aquí -->
+    <title>AI Recipe Generator</title>
+    <!-- Include Typewriter.js and Axios directly here -->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
-      /* --- Estilos CSS (src/style.css) --- */
+      /* --- CSS Styles (src/style.css) --- */
       body {
-        background-color: #fcf8f3; /* Un crema suave y cálido */
-        font-family: "Inter", Helvetica, Arial, sans-serif; /* Fuente Inter para un look moderno */
+        background-color: #fcf8f3; /* A soft, warm cream */
+        font-family: "Inter", Helvetica, Arial, sans-serif; /* Inter font for a modern look */
         line-height: 1.6;
-        color: #333; /* Texto oscuro para legibilidad */
+        color: #333; /* Dark text for readability */
       }
 
       a {
-        color: #a52a2a; /* Marrón rojizo, como el del café o el vino */
+        color: #a52a2a; /* Reddish brown, like coffee or wine */
         text-decoration: none;
       }
 
@@ -26,9 +26,9 @@
       }
 
       .container {
-        margin: 80px auto; /* Reducido el margen superior */
-        max-width: 700px; /* Aumentado un poco el ancho máximo */
-        padding: 20px; /* Añadido padding para pantallas más pequeñas */
+        margin: 80px auto; /* Reduced top margin */
+        max-width: 700px; /* Slightly increased max width */
+        padding: 20px; /* Added padding for smaller screens */
       }
 
       header {
@@ -37,20 +37,20 @@
 
       h1 {
         text-align: center;
-        font-weight: 900; /* Más peso para el título */
-        font-size: 44px; /* Tamaño de fuente ligeramente más grande */
+        font-weight: 900; /* More weight for the title */
+        font-size: 44px; /* Slightly larger font size */
         line-height: 1.2;
-        color: #5a2d0c; /* Un marrón profundo, como el chocolate o el café */
+        color: #5a2d0c; /* A deep brown, like chocolate or coffee */
         margin-bottom: 20px;
       }
 
       .form-container {
-        background-color: #ffffff; /* Fondo blanco para el formulario */
-        border-radius: 15px; /* Bordes más redondeados */
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
+        background-color: #ffffff; /* White background for the form */
+        border-radius: 15px; /* More rounded borders */
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
         padding: 30px;
         display: flex;
-        flex-direction: column; /* Cambiado a columna para mejor responsividad */
+        flex-direction: column; /* Changed to column for better responsiveness */
         align-items: center;
         margin-bottom: 30px;
       }
@@ -58,14 +58,14 @@
       form {
         width: 100%;
         display: flex;
-        flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-        gap: 10px; /* Espacio entre elementos del formulario */
+        flex-wrap: wrap; /* Allows elements to wrap on small screens */
+        gap: 10px; /* Space between form elements */
       }
 
       .instructions {
-        flex-grow: 1; /* Permite que ocupe el espacio disponible */
+        flex-grow: 1; /* Allows it to take available space */
         padding: 18px 25px;
-        border: 1px solid #d3baba; /* Borde más suave */
+        border: 1px solid #d3baba; /* Softer border */
         font-size: 17px;
         border-radius: 30px;
         line-height: 22px;
@@ -73,38 +73,38 @@
       }
 
       .submit-button {
-        background: #cd7f32; /* Color naranja/marrón que evoca especias o pan */
+        background: #cd7f32; /* Orange/brown color evoking spices or bread */
         color: white;
         border: none;
-        width: auto; /* Ancho automático basado en el contenido */
-        min-width: 150px; /* Ancho mínimo para el botón */
+        width: auto; /* Automatic width based on content */
+        min-width: 150px; /* Minimum width for the button */
         font-size: 18px;
         border-radius: 30px;
         padding: 16px 28px;
         cursor: pointer;
-        transition: background 0.3s ease; /* Transición suave para el hover */
+        transition: background 0.3s ease; /* Smooth transition for hover */
       }
 
       .submit-button:hover {
-        background: #b8621d; /* Un tono más oscuro al pasar el ratón */
+        background: #b8621d; /* A darker shade on hover */
       }
 
       .hint {
         font-size: 14px;
         opacity: 0.7;
         text-align: center;
-        margin-top: 15px; /* Espacio sobre la pista */
+        margin-top: 15px; /* Space above the hint */
       }
 
       .recipe {
         font-size: 17px;
-        background-color: #ffffff; /* Fondo blanco para la receta */
+        background-color: #ffffff; /* White background for the recipe */
         padding: 30px;
         line-height: 1.8;
-        border-left: 5px solid #cd7f32; /* Borde más grueso y del color principal */
-        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05); /* Sombra más pronunciada */
+        border-left: 5px solid #cd7f32; /* Thicker border in the main color */
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05); /* More pronounced shadow */
         border-radius: 10px;
-        margin-top: 40px; /* Espacio superior */
+        margin-top: 40px; /* Top space */
       }
 
       .recipe h3 {
@@ -123,7 +123,7 @@
       }
 
       .recipe strong {
-          color: #a52a2a; /* Color para la firma */
+          color: #a52a2a; /* Color for the signature */
       }
 
       .generating {
@@ -131,7 +131,7 @@
         font-size: 20px;
         color: #a52a2a;
         opacity: 0.8;
-        animation: pulse 1.5s infinite; /* Animación de pulsación */
+        animation: pulse 1.5s infinite; /* Pulse animation */
       }
 
       @keyframes pulse {
@@ -173,7 +173,7 @@
   <body>
     <div class="container">
       <header>
-        <h1>Generador de Recetas con IA</h1>
+        <h1>AI Recipe Generator</h1>
       </header>
 
       <main>
@@ -181,104 +181,104 @@
           <form id="recipe-generator-form">
             <input
               type="text"
-              placeholder="Ingresa ingredientes o tipo de cocina..."
+              placeholder="Enter ingredients or cuisine type..."
               autofocus
               required
               autocomplete="off"
               class="instructions"
             />
-            <input type="submit" class="submit-button" id="user-instructions" value="Generar Receta" />
+            <input type="submit" class="submit-button" id="user-instructions" value="Generate Recipe" />
           </form>
-          <div class="hint">Ej: Tomate, Queso, Pollo, Italiana, Vegana</div>
+          <div class="hint">E.g., Tomato, Cheese, Chicken, Italian, Vegan</div>
         </div>
         <div class="recipe hidden" id="recipe"></div>
       </main>
 
       <footer>
-        Este proyecto de IA fue codificado por
+        This AI project was coded by
         <a href="https://www.linkedin.com/in/alecanclini/" target="_blank"
           >Alejandra Canclini</a
         >
-        y es
+        and is
         <a href="https://github.com/malecanclini" target="_blank"
-          >de código abierto en Github</a
+          >open-sourced on Github</a
         >
-        y está
+        and is
         <a
           href="https://app.netlify.com/teams/malecanclini/sites"
           target="_blank"
-          >alojado en Netlify</a
+          >hosted on Netlify</a
         >
       </footer>
     </div>
 
     <script>
-      /* --- Código JavaScript (src/index.js) --- */
+      /* --- JavaScript Code (src/index.js) --- */
       function displayRecipe(response) {
-        // Selecciona el elemento HTML donde se mostrará la receta
+        // Select the HTML element where the recipe will be displayed
         let recipeElement = document.querySelector("#recipe");
-        // Borra cualquier contenido previo en el elemento de la receta
+        // Clear any previous content in the recipe element
         recipeElement.innerHTML = "";
 
-        // Utiliza Typewriter.js para mostrar la respuesta de la IA de forma animada
+        // Use Typewriter.js to display the AI response in an animated way
         new Typewriter("#recipe", {
-          strings: response.data.answer, // El texto de la receta generada por la IA
-          autoStart: true, // Inicia la animación automáticamente
-          delay: 1, // Retraso entre caracteres para el efecto de escritura
-          cursor: "", // Oculta el cursor al finalizar la escritura
+          strings: response.data.answer, // The recipe text generated by the AI
+          autoStart: true, // Start the animation automatically
+          delay: 1, // Delay between characters for the typing effect
+          cursor: "", // Hide the cursor after typing is finished
         });
       }
 
-      // Clave API para la llamada al servicio de IA (mantén tu clave aquí)
-      let apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; // ¡Asegúrate de que esta clave sea válida!
-      // URL base de la API de SheCodes AI
+      // API key for the AI service call (keep your key here)
+      let apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; // Make sure this key is valid!
+      // Base URL of the SheCodes AI API
       let apiURL =
         "https://api.shecodes.io/ai/v1/generate?prompt={prompt}&context={context}&key={key}";
 
       function generateRecipe(event) {
-        event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+        event.preventDefault(); // Prevent the form from submitting by default
 
-        // Obtiene el valor del campo de entrada del usuario (ingredientes o tipo de cocina)
+        // Get the value from the user input field (ingredients or cuisine type)
         let instructionsInput = document.querySelector(".instructions");
-        // Crea el prompt para la IA, pidiéndole una receta basada en la entrada del usuario
-        let prompt = `Genera una receta para "${instructionsInput.value}"`;
-        // Define el contexto para la IA, indicándole que actúe como un chef experto y cómo formatear la respuesta
+        // Create the prompt for the AI, asking for a recipe based on user input
+        let prompt = `Generate a recipe for "${instructionsInput.value}"`;
+        // Define the context for the AI, instructing it to act as an expert chef and how to format the response
         let context =
-          "Eres un chef profesional y un experto en recetas. Tu misión es generar una receta simple y deliciosa basada en la entrada del usuario. La receta debe incluir un título claro (usando <h3>), una lista de ingredientes (usando <ul> con <li> para cada ingrediente), y pasos de instrucción claros (usando <ol> con <li> para cada paso). Asegúrate de que cada ingrediente y cada paso de instrucción estén en su propia línea. Al final de la receta, firma con 'SheCodes AI Recipes' dentro de un elemento <strong>, y NO al principio del texto.";
-        // Crea el objeto de parámetros para la solicitud a la API
+          "You are a professional chef and a recipe expert. Your mission is to generate a simple and delicious recipe based on user input. The recipe should include a clear title (using <h3>), a list of ingredients (using <ul> with <li> for each ingredient), and clear instruction steps (using <ol> with <li> for each step). Make sure each ingredient and each instruction step is on its own line. At the end of the recipe, sign with 'SheCodes AI Recipes' inside a <strong> element, and NOT at the beginning of the text.";
+        // Create the parameters object for the API request
         let params = {
           prompt: prompt,
           context: context,
           key: apiKey,
         };
 
-        // Selecciona el elemento de la receta y lo hace visible
+        // Select the recipe element and make it visible
         let recipeElement = document.querySelector("#recipe");
         recipeElement.classList.remove("hidden");
-        // Muestra un mensaje de carga mientras se genera la receta
-        recipeElement.innerHTML = `<div class="generating">⏳ Generando una receta para ${instructionsInput.value}...</div>`;
+        // Display a loading message while the recipe is being generated
+        recipeElement.innerHTML = `<div class="generating">⏳ Generating a recipe for ${instructionsInput.value}...</div>`;
 
-        // Realiza la llamada a la API de SheCodes AI
+        // Make the call to the SheCodes AI API
         axios
           .get(apiURL, { params })
           .then((response) => {
-            // Si la llamada es exitosa, muestra la receta generada
+            // If the call is successful, display the generated recipe
             displayRecipe(response);
           })
           .catch((error) => {
-            // Si hay un error, lo registra en la consola y muestra un mensaje al usuario
-            console.error("Error generando la receta:", error);
+            // If there's an error, log it to the console and display a message to the user
+            console.error("Error generating recipe:", error);
             recipeElement.innerHTML =
-              "Error generando la receta. Por favor, inténtalo de nuevo.";
+              "Error generating recipe. Please try again.";
           });
       }
 
-      // Selecciona el formulario y añade un 'event listener' para cuando se envíe
+      // Select the form and add an 'event listener' for when it's submitted
       let recipeFormElement = document.querySelector("#recipe-generator-form");
-      if (recipeFormElement) { // Verifica si el elemento existe antes de añadir el listener
+      if (recipeFormElement) { // Check if the element exists before adding the listener
           recipeFormElement.addEventListener("submit", generateRecipe);
       } else {
-          console.error("El formulario con ID 'recipe-generator-form' no fue encontrado.");
+          console.error("Form with ID 'recipe-generator-form' not found.");
       }
     </script>
   </body>
