@@ -5,20 +5,24 @@ const resultDiv = document.getElementById("result");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const prompt = `Create a recipe using the following ingredients: ${userInput.value}.`;
-    const apiKey = "YOUR_API_KEY";
+    const apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; 
+    
+    // Updated context
+    const context = "You are a cooking expert. Could you generate a simple recipe for the user who indicates the ingredients available in their fridge?";
+
     resultDiv.textContent = "Generating...";
 
     try {
-        const response = await fetch(`https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&key=${apiKey}`, {
+        const response = await fetch(`https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`, {
             method: "GET",
         });
 
         if (!response.ok) {
-            throw new Error('Error en la red');
+            throw new Error('Network error');
         }
 
         const data = await response.json();
-        resultDiv.textContent = data.result;
+        resultDiv.textContent = data.result; // Adjust according to the response structure
     } catch (error) {
         resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
     }
