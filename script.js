@@ -5,7 +5,7 @@ const resultDiv = document.getElementById("result");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const prompt = `Create a recipe using the following ingredients: ${userInput.value}.`;
-    const apiKey = "4c2d34edtb05a9b0ao32170dd17e08f4"; 
+    const apiKey = `4c2d34edtb05a9b0ao32170dd17e08f4`; 
     
     // Context for the AI
     const context = "You are a cooking expert. Could you generate a simple recipe for the user who indicates the ingredients available in their fridge?";
